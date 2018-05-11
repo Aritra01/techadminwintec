@@ -23,8 +23,24 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control" name="name" value="{{ $tutor->name }}">
+                                            <label class="control-label">First Name</label>
+                                            <input type="text" class="form-control" name="FirstName" value="{{ $tutor->fname }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Last Name</label>
+                                            <input type="text" class="form-control" name="LastName" value="{{ $tutor->lname }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Department</label>
+                                            <input type="text" class="form-control" name="T_Department" required>
                                         </div>
                                     </div>
                                 </div>
