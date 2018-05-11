@@ -39,13 +39,16 @@ class TutorController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'subjects'=> 'required',
-            'image' => 'required|mimes:jpeg,jpg,bmp,png',
+            'FirstName' => 'required|alpha||min:2|max:10',
+            'LastName' => 'required|alpha|min:2|max:10',
+            'T_Department' => 'required|alpha|min:3|max:10',
+
+            'email'=>'required|unique:tutors,email',
+            'subjects' => 'required',
+            //'image' => 'required|mimes:jpeg,jpg,bmp,png',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = str_slug($request->FirstName);
         if (isset($image))
         {
             $currentDate = Carbon::now()->toDateString();
@@ -60,7 +63,9 @@ class TutorController extends Controller
         }
 
         $tutor = new Tutor();
-        $tutor->name = $request->name;
+        $tutor->fname = $request->FirstName;
+        $tutor->lname = $request->LastName;
+        $tutor->department_name = $request->T_Department;
         $tutor->email = $request->email;
         $tutor->subjects = $request->subjects;
         $tutor->image = $imagename;
@@ -101,13 +106,15 @@ class TutorController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
+            'FirstName' => 'required|alpha|min:2|max:10',
+            'LastName' => 'required|alpha|min:2|max:10',
+            'T_Department' => 'required|alpha|min:2|max:10',
+            'email' => 'required|email',
             'subjects' => 'required',
-            'image' => 'mimes:jpeg,jpg,bmp,png',
+            //'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = str_slug($request->FirstName);
         $tutor = Tutor::find($id);
         if (isset($image))
         {
@@ -122,7 +129,9 @@ class TutorController extends Controller
             $imagename = $tutor->image;
         }
 
-        $tutor->name = $request->name;
+        $tutor->fname = $request->FirstName;
+        $tutor->lname = $request->LastName;
+        $tutor->department_name = $request->T_Department;
         $tutor->email = $request->email;
         $tutor->subjects = $request->subjects;
         $tutor->image = $imagename;
