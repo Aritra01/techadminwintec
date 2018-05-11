@@ -23,8 +23,24 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control" name="name" value="{{ $student->name }}">
+                                            <label class="control-label">First Name</label>
+                                            <input type="text" class="form-control" name="FirstName" value="{{ $student->fname }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Last Name</label>
+                                            <input type="text" class="form-control" name="LastName" value="{{ $student->lname }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Department</label>
+                                            <input type="text" class="form-control" name="S_Department" required>
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +48,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Email</label>
-                                            <input type="text" class="form-control" name="email" value="{{ $student->email }}">
+                                            <input type="text" class="form-control" name="email" value="{{ $student->email }}" required>
                                         </div>
                                     </div>
                                 </div>
