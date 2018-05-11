@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 use App\Student;
 use Carbon\Carbon;
 
@@ -29,6 +30,37 @@ class StudentController extends Controller
     {
         return view('admin.student.create');
     }
+    
+    /**
+     * Search state from database base on some specific constraints
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *  @return \Illuminate\Http\Response
+     */
+    public function search(Request $request) {
+        $constraints = [
+            'FirstName' => $request['fname'],
+            'department.name' => $request['department_name']
+            ];
+        $students = $this->doSearchingQuery($constraints);
+        $constraints['department_name'] = $request['department_name'];
+        return view('admin.student.index', ['students' => $students, 'searchingVals' => $constraints]);
+    }
+    private function doSearchingQuery($constraints) {
+        $query = DB::table('students')
+        
+        ->select('students.fname as First_Name', 'students.department_name as department_name');
+        $fields = array_keys($constraints);
+        $index = 0;
+        foreach ($constraints as $constraint) {
+            if ($constraint != null) {
+                $query = $query->where($fields[$index], 'like', '%'.$constraint.'%');
+            }
+
+            $index++;
+        }
+        return $query->paginate(5);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,12 +71,16 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,bmp,png',
+            'FirstName' => 'required|alpha||min:3|max:10',
+            'LastName' => 'required|alpha|min:3|max:10',
+            'S_Department' => 'required|alpha|min:3|max:10',
+            //'S_DOB' => 'required|alpha|min:3|max:10',
+            //'email' => 'required|email',
+            'email'=>'required|unique:students,email',
+            //'image' => 'required|mimes:jpeg,jpg,bmp,png',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = str_slug($request->FirstName);
         if (isset($image))
         {
             $currentDate = Carbon::now()->toDateString();
@@ -59,7 +95,10 @@ class StudentController extends Controller
         }
 
         $student = new Student();
-        $student->name = $request->name;
+        $student->fname = $request->FirstName;
+        $student->lname = $request->LastName;
+        $student->department_name = $request->S_Department;
+        //$student->birthdate = $request->S_DOB;
         $student->email = $request->email;
         $student->image = $imagename;
         $student->save();
@@ -99,12 +138,15 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'image' => 'mimes:jpeg,jpg,bmp,png',
+            'FirstName' => 'required|alpha|min:3|max:10',
+            'LastName' => 'required|alpha|min:3|max:10',
+            'S_Department' => 'required|alpha|min:3|max:10',
+
+            'email' => 'required|email',
+            //'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = str_slug($request->FirstName);
         $student = Student::find($id);
         if (isset($image))
         {
@@ -119,7 +161,9 @@ class StudentController extends Controller
             $imagename = $student->image;
         }
 
-        $student->name = $request->name;
+        $student->fname = $request->FirstName;
+        $student->lname = $request->LastName;
+        $student->department_name = $request->S_Department;
         $student->email = $request->email;
         $student->image = $imagename;
         $student->save();
@@ -142,4 +186,8 @@ class StudentController extends Controller
         $student->delete();
         return redirect()->back()->with('successMsg','Student Successfully Deleted');
     }
+    
+      
+
+    
 }
