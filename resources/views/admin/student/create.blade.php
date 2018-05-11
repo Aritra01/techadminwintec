@@ -22,16 +22,33 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Name</label>
-                                            <input type="text" class="form-control" name="name">
+                                            <label class="control-label">First Name</label>
+                                            <input type="text" class="form-control" name="FirstName" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
+                                            <label class="control-label">Last Name</label>
+                                            <input type="text" class="form-control" name="LastName" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Department</label>
+                                            <input type="text" class="form-control" name="S_Department" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
                                             <label class="control-label">Email</label>
-                                            <input type="text" class="form-control" name="email">
+                                            <input type="text" class="form-control" name="email" required>
                                         </div>
                                     </div>
                                 </div>
@@ -50,6 +67,7 @@
             </div>
         </div>
     </div>
+    
 @endsection
 
 @push('scripts')
