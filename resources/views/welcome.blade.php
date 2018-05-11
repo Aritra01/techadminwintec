@@ -7,51 +7,54 @@
     <link rel="icon" href="{{asset('frontend/ico/favicon1.ico')}}" type="image/png">
     <title>WINTEC TECHNICAL ADMIN</title>
     <meta content="Wintec" name="description">
-    <meta content="Aritra Sengupta" name="author">
+    <meta content="Aritra Sengupta - Faryaz Rehmat" name="author">
     <meta content="Wintec" name="keywords">
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
     <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
-    <link href="http://localhost/hci/public/css/tag_input.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body><section id="header">
-    <nav class="navbar navbar-expand-lg fixed-top ">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="{{asset('frontend/img/wintec-logo.png')}}" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+ <nav class="navbar navbar-expand-sm navbar-light" style="background: #f4d200;">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
 
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav mr-4">
+<!-- Brand -->
+<a class="navbar-brand" href="#"><img src="{{asset('frontend/img/wintec-logo.png')}}" alt="Welcome to Wintec"></a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Technical Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Business Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Industry Partners</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('admin.dashboard')}}">Login <i class="fa fa-sign-in"></i></a></li>
-                </ul>
+<!-- Links -->
+<div class="collapse navbar-collapse justify-content-end" id="nav-content">   
+<ul class="navbar-nav">
+    <li class="nav-item active">
+        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+      </li>
+<li class="nav-item">
+<a class="nav-link" href="{{route('admin.dashboard')}}">Technical Admin</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Business Admin Login</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Industry Partners</a>
+</li>
+</ul>
 
-            </div>
-        </div>
-    </nav>
+</nav>
 </section>
 <section id="message_container">
     <div class="container">
     </div>
 </section><div class="content_wrapper">
 
-    <section id="banner">
-        <img src="{{asset('frontend/img/bg/Capture.PNG')}}" alt="banner">
+    <section id="banner"><br />
+       <center><img src="{{asset('frontend/img/bg/Capture.PNG')}}" alt="banner"></center> 
     </section><div class="container">
         <h1>Welcome to Wintec learning.</h1>
         <p>This is your all new teaching and learning environment, powered by Moodle. There are a number of exciting new features that will make your learning experience more engaging and which will also integrate more readily with your social media and the world you live in.</p>
@@ -121,9 +124,3 @@
 </body>
 </html>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://localhost/hci/public/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://localhost/hci/public/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="http://localhost/hci/public/js/front.js"></script>
-<script type="text/javascript" src="http://localhost/hci/public/js/tags_input.js"></script>
