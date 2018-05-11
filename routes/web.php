@@ -15,12 +15,14 @@ Route::get('/','HomeController@index')->name('welcome');
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'admin'],function (){
+Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'Admin'],function (){
 
     Route::get('dashboard','DashboardController@index')->name('admin.dashboard');
     Route::resource('tutor','TutorController');
     Route::resource('pathway','PathwayController');
     Route::resource('projects','ProjectsController');
     Route::resource('student','StudentController');
+    Route::post('student/search', 'StudentController@search')->name('student.search');
     Route::resource('techadmin','TechadminController');
+
 });
